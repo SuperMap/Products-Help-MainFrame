@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import tocbot from 'tocbot';
+import {FormattedMessage} from 'react-intl';
 
 class TOC extends React.Component {
     componentDidMount() {
@@ -24,7 +25,10 @@ class TOC extends React.Component {
                 top: '101px',
                 bottom: '0',
               }}>
-                {(this.props.showHeading ? <h3>本主题内容</h3> : null)}
+                {(this.props.showHeading ? <FormattedMessage id="rightcontents_title">
+              {txt => (
+                <h3 onDark={true}>{txt}</h3>
+              )} </FormattedMessage>: null)}
                 <div id ="artile_TocListContainer" className='toc-list-container'></div>
             </nav>
         )
