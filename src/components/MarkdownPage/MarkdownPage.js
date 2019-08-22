@@ -18,6 +18,7 @@ import {sharedStyles} from 'theme';
 import createOgUrl from 'utils/createOgUrl';
 import TOC from 'components/TOC.js';
 
+import DownloadPDF from './DownloadPDF';
 import type {Node} from 'types';
 
 type Props = {
@@ -54,7 +55,7 @@ const MarkdownPage = ({
   location,
   markdownRemark,
   sectionList,
-  titlePostfix = 'SuperMap',
+  titlePostfix = '-SuperMap',
   hasCurTOC = true,
 }: Props) => {
   const hasAuthors = authors.length > 0;
@@ -62,6 +63,7 @@ const MarkdownPage = ({
 
   // const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
   // const next = getPageById(sectionList, markdownRemark.frontmatter.next);
+  // console.log(markdownRemark.html);
 
   return (
     <Flex
@@ -78,7 +80,8 @@ const MarkdownPage = ({
       <TitleAndMetaTags
         ogDescription={ogDescription}
         ogUrl={createOgUrl(markdownRemark.fields.slug)}
-        title={`${titlePrefix}${titlePostfix}`}
+        //title={`${titlePrefix}${titlePostfix}`}  //浏览器标题中带有SuperMap后缀
+        title={`${titlePrefix}`}
       />
       <div css={{
         flex: '1 0 auto',
@@ -121,6 +124,7 @@ const MarkdownPage = ({
               )}
 
               <div css={sharedStyles.articleLayout.content}>
+              <DownloadPDF title="Download" markdownTitle={titlePrefix}/>
                 <div id="article_Content"
                   css={[sharedStyles.markdown]}
                   dangerouslySetInnerHTML={{__html: markdownRemark.html}}
