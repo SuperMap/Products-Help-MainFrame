@@ -26,7 +26,8 @@ const Terms = ({data, location}) => {
         location={location}
         markdownRemark={data.markdownRemark}
         sectionList={sectionListTutorialTmp}
-        titlePostfix=" &ndash; React" hasCurTOC={false}
+        hasCurTOC={false}
+        // titlePostfix=" &ndash; SuperMap" hasCurTOC={false} // 控制页面在浏览器中的标题
       />
     </Layout>
   );

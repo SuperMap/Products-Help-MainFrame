@@ -26,7 +26,7 @@ const Docs = ({data, location}) => {
         location={location}
         markdownRemark={data.markdownRemark}
         sectionList={sectionListDocs}
-        titlePostfix=" &ndash; React"
+        // titlePostfix=" &ndash; SuperMap" //控制页面在浏览器中的标题
       />
     </Layout>
   );
