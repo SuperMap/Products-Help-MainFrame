@@ -42,26 +42,14 @@ const Header = ({location, langsMenu}) => {
       toLanObj.link = item.link;
     }
   });
-  let drapDown = "SuperMap iDesktop Java";
-  if(location.port.includes('8000')){
-    drapDown = "SuperMap iDesktop .NET";
-  }else if(location.port.includes('8001')){
-    drapDown = "SuperMap iDesktop Java";
-  }else if(location.port.includes('8002')){
-    drapDown = "SuperMap iObjects";
-  }else if(location.port.includes('8003')){
-    drapDown = "SuperMap iServer";
-  }else if(location.port.includes('8004')){
-    drapDown = "SuperMap iPortal";
-  }else if(location.port.includes('8005')){
-    drapDown = "SuperMap iEdge";
-  }else if(location.port.includes('8006')){
-    drapDown = "SuperMap iManager";
-  }else if(location.port.includes('8007')){
-    drapDown = "SuperMap iClient"; 
-  }else {
-    drapDown = "SuperMap iMobile";
-  }
+  let dropDown = "";
+  let productName=location.pathname.split('/')[1];
+  if(productName == "iDesktop_NET")
+    dropDown = "SuperMap iDesktop.NET";
+  else if(productName == "iDesktop_Java")
+    dropDown = "SuperMap iDesktop Java";
+  else
+    dropDown = "SuperMap " + productName;
   return (
     <header
       css={{
@@ -173,7 +161,7 @@ const Header = ({location, langsMenu}) => {
                 border: 0,
               },
             }}>
-              {drapDown} <Icon type="down" />
+              {dropDown} <Icon type="down" />
             </a>
             </Dropdown>
           <nav
