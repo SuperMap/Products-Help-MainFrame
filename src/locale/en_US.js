@@ -20,6 +20,7 @@ const en_US = {
     footer_topics: "Tech Docs",
     footer_tutorial:"Tutorial",
     footer_api: "APIs",
+    rightcontents_title:"On This Page",
     //... ...
 }
 export default en_US;
