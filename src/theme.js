@@ -140,11 +140,16 @@ const sharedStyles = {
       },
 
       [media.between('small', 'largerSidebar')]: {
+        maxWidth: 'calc(100% - 300px)',
         padding: '0 60px',
       },
 
       [media.between('small', 'medium')]: {
         padding: '0 40px',
+      },
+
+      [media.greaterThan('largerSidebar')]: {
+        maxWidth: 'calc(100% - 360px)',
       },
     },
     content: {
@@ -165,7 +170,7 @@ const sharedStyles = {
       },
 
       [media.between('small', 'largerSidebar')]: {
-        flex: '0 0 200px',
+        flex: '0 0 150px',
         // marginRight: 60,
       },
 
@@ -174,7 +179,7 @@ const sharedStyles = {
       },
 
       [media.greaterThan('largerSidebar')]: {
-        flex: '0 0 270px',
+        flex: '0 0 180px',
       },
 
       [media.greaterThan('sidebarFixed')]: {
@@ -203,7 +208,7 @@ const sharedStyles = {
       },
 
       [media.between('small', 'largerSidebar')]: {
-        flex: '0 0 200px',
+        flex: '0 0 150px',
         // marginLeft: 100,
         // position: 'fixed',
         width: 217,
@@ -218,7 +223,7 @@ const sharedStyles = {
       },
 
       [media.greaterThan('largerSidebar')]: {
-        flex: '0 0 270px',
+        flex: '0 0 180px',
       },
 
       [media.greaterThan('sidebarFixed')]: {
@@ -434,6 +439,7 @@ const sharedStyles = {
       },
 
       '& li': {
+        overflowWrap: 'break-word',
         marginTop: 10,
       },
 
@@ -506,6 +512,7 @@ const sharedStyles = {
           lineHeight: 1.55,
           marginBottom: 30,
           marginTop: 30,
+          wordBreak: 'break-word',
       },
 
       '& table thead,& thead tr': {
