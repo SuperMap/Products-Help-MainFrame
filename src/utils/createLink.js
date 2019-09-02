@@ -95,6 +95,25 @@ const createLinkTutorial = ({
   );
 };
 
+const createLinkTerms = ({
+  isActive,
+  item,
+  section,
+}: CreateLinkBaseProps): Node => {
+  if (item.href) {
+    return (
+      <a css={[linkCss]} href={item.href}>
+        {item.title}
+      </a>
+    );
+  }
+  return createLinkDocs({
+    isActive,
+    item,
+    section,
+  });
+};
+
 const activeLinkCss = {
   fontWeight: 700,
   color: colors.linkblue,
@@ -106,12 +125,7 @@ const activeLinkBefore = {
   borderLeft: `4px solid ${colors.linkblue}`,
   paddingLeft: 16,
   position: 'absolute',
-  left: 0,
-  marginTop: -3,
-
-  [media.greaterThan('largerSidebar')]: {
-    left: -15,
-  },
+  left: -15,
 };
 
 const linkCss = {
@@ -133,4 +147,5 @@ export {
   createLinkCommunity,
   createLinkDocs,
   createLinkTutorial,
+  createLinkTerms,
 };

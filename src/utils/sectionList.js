@@ -102,6 +102,20 @@ const sectionListTutorial_zh = navTutorial_zh.map(
   }),
 );
 
+const sectionListTerms_en = navTerms_en.map(
+  (item: Object): Object => ({
+    ...item,
+    directory: '/en/terms',
+  }),
+);
+
+const sectionListTerms_zh = navTerms_zh.map(
+  (item: Object): Object => ({
+    ...item,
+    directory: '/zh/terms',
+  }),
+);
+
 export {
   sectionListCommunity,
   sectionListDocs_en,
@@ -112,8 +126,8 @@ export {
   sectionListTopics_zh,
   sectionListTutorial,
   sectionListTutorial_zh,
-  navTerms_en as sectionListTerms_en,
-  navTerms_zh as sectionListTerms_zh,
+  sectionListTerms_en,
+  sectionListTerms_zh,
   sectionListSpecs_en,
   sectionListSpecs_zh,
 };
