@@ -155,7 +155,8 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
               OGC
             </ExternalFooterLink> */}
           </FooterNav>
-          <FooterNav layoutHasSidebar={layoutHasSidebar}>
+          {/* 以下内容为文档规范的链接内容 */}
+          {/* <FooterNav layoutHasSidebar={layoutHasSidebar}>
             <FormattedMessage id="footer_specs">
               {txt => (
                 <MetaTitle onDark={true}>{txt}</MetaTitle>
@@ -171,7 +172,7 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
                 </FooterLink>
               );
             })}
-          </FooterNav>
+          </FooterNav> */}
         </div>
         <section
           css={{
