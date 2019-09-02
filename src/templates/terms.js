@@ -8,7 +8,7 @@ import MarkdownPage from 'components/MarkdownPage';
 import React from 'react';
 import {graphql} from 'gatsby';
 import Layout from 'components/Layout';
-import {createLinkTutorial} from 'utils/createLink';
+import {createLinkTerms} from 'utils/createLink';
 import {sectionListTerms_en, sectionListTerms_zh} from 'utils/sectionList';
 
 const Terms = ({data, location}) => {
@@ -16,13 +16,13 @@ const Terms = ({data, location}) => {
   if (data.markdownRemark.fields.langKey === 'zh') {
     sectionListTutorialTmp = sectionListTerms_zh;
   }
-  console.log('tutorial directory');
-  console.log(sectionListTutorialTmp);
+  // console.log('tutorial directory');
+  // console.log(sectionListTutorialTmp);  
   return (
     <Layout location={location}>
       <MarkdownPage
         enableScrollSync
-        createLink={createLinkTutorial}
+        createLink={createLinkTerms}
         location={location}
         markdownRemark={data.markdownRemark}
         sectionList={sectionListTutorialTmp}

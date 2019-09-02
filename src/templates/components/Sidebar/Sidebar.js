@@ -37,7 +37,7 @@ class Sidebar extends Component {
         direction="column"
         halign="stretch"
         css={{
-          width: '270px',
+          // width: '270px',
           // paddingLeft: 20,
           position: 'relative',
 
