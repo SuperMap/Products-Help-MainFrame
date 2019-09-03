@@ -16,7 +16,6 @@ import {
   IntlProvider,
   FormattedMessage,
 } from 'react-intl'; /* react-intl imports */
-import {getCurrentLangKey, getLangs, getUrlForLang} from 'ptz-i18n';
 import en from 'react-intl/locale-data/en';
 import zh from 'react-intl/locale-data/zh';
 import zh_CN from '../../locale/zh_CN'; // import defined messages in Chinese
@@ -49,24 +48,26 @@ class Template extends Component<Props> {
     i18nMessages['zh'] = zh_CN;
     const langs = ['en', 'zh'];
     const defaultLangKey = 'en';
-    // console.log('1.defaultLangKey: ' + defaultLangKey);
-    const curLangKey = getCurrentLangKey(
-      langs,
-      defaultLangKey,
-      location.pathname,
-    );
-    console.log('2.curLangKey: ' + curLangKey);
-    // console.log('3.langs type: ' + typeof langs);
-    // console.log(
-    //   '4.getUrlForLang: ' + getUrlForLang('/' + curLangKey, location.pathname),
-    // );
-    const langsMenu = getLangs(
-      langs,
-      curLangKey,
-      getUrlForLang('/' + curLangKey, location.pathname),
-    );
-    console.log(langsMenu);
-    // console.log(i18nMessages[curLangKey]);
+
+
+    let locationPath = location.pathname;
+    //生产环境使用 gatsby build --prefix-paths 时，用下述代码
+    locationPath = locationPath.substring(locationPath.replace('/', 'a').indexOf('/'), locationPath.length);
+    let curLangKey = 'en';
+    let enPageObj = {};
+    enPageObj.langKey = "en";
+    enPageObj.link = locationPath.replace("/zh/","/en/");
+    enPageObj.selected = true;
+    let zhPageObj = {};
+    zhPageObj.langKey = "zh";
+    zhPageObj.link = locationPath.replace("/en/","/zh/");
+    zhPageObj.selected = false;
+    if(location.pathname.indexOf("/zh/")>-1){
+      curLangKey = 'zh';
+      enPageObj.selected = false;
+      zhPageObj.selected = true;
+    }
+    let langsMenu = [enPageObj,zhPageObj];
 
     return (
       <IntlProvider locale={curLangKey} messages={i18nMessages[curLangKey]}>
