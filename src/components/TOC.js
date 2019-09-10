@@ -24,6 +24,7 @@ class TOC extends React.Component {
                 overflowY: 'auto',
                 top: '101px',
                 bottom: '0',
+                fontSize: '16px', // 添加右側目錄的字体大小
               }}>
                 {(this.props.showHeading ? <FormattedMessage id="rightcontents_title">
               {txt => (
