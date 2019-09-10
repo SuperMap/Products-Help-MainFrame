@@ -124,7 +124,7 @@ const MarkdownPage = ({
               )}
 
               <div css={sharedStyles.articleLayout.content}>
-              <DownloadPDF title="Download" markdownTitle={titlePrefix}/>
+              {/* <DownloadPDF title="Download" markdownTitle={titlePrefix}/> */}
                 <div id="article_Content"
                   css={[sharedStyles.markdown]}
                   dangerouslySetInnerHTML={{__html: markdownRemark.html}}
