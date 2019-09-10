@@ -270,12 +270,12 @@ const sharedStyles = {
     '& a:not(.anchor):not(.gatsby-resp-image-link)': linkStyle,
 
     '& > p:first-child': {
-      fontSize: 18,
-      fontWeight: 300,
-      color: colors.subtle,
+      fontSize: 17,
+     //fontWeight: 300,
+      color: colors.text,
 
       [media.greaterThan('xlarge')]: {
-        fontSize: 24,
+        fontSize: 17,
       },
 
       '& a, & strong': {
@@ -287,7 +287,8 @@ const sharedStyles = {
       marginTop: 30,
       fontSize: 17,
       lineHeight: 1.7,
-      maxWidth: '42em',
+      color: colors.text,
+     // maxWidth: '42em',
 
       '&:first-of-type': {
         marginTop: 15,
@@ -383,6 +384,7 @@ const sharedStyles = {
     '& h3': {
       '::before': {
         content: ' ',
+        fontWeight: 300,
         display: 'block',
         paddingTop: 90,
         marginTop: -45,
@@ -417,9 +419,9 @@ const sharedStyles = {
       },
 
       fontSize: 20,
-      color: colors.subtle,
+      color: colors.text,
       lineHeight: 1.2,
-      fontWeight: 400,
+      //fontWeight: 400,
     },
 
     '& h4 + p': {
@@ -491,7 +493,7 @@ const sharedStyles = {
         marginTop: 15,
 
         '&:first-of-type': {
-          fontWeight: 700,
+          fontWeight: 300,
           marginTop: 0,
         },
 
@@ -527,7 +529,7 @@ const sharedStyles = {
       },
 
       '& table th,& table td': {
-          fontWeight: 300,
+         // fontWeight: 300,
           border: '#cccccc',
           padding: '0.51667rem',
           fontSize: 15,
