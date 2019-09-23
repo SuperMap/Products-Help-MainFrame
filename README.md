@@ -8,6 +8,10 @@
 
 存放页面相关的风格样式文件。
 
+### locale文件夹
+
+src/locale 文件夹中存放的是产品的本地化资源，本地化资源各个产品不完全相同。为便于产品维护，在产品文档仓库中也放置了src/locale文件夹，存放产品的本地化资源。使用时，直接剪贴locale文件夹中的内容。
+
 # 如何使用
 
 将所有文件夹，直接拷贝到content文件夹下。content文件夹，需要从[Products-Help-MainFrame](https://github.com/SuperMap/Products-Help-MainFrame "文档主框架")仓库下载。
@@ -41,7 +45,9 @@ npm install -g gatsby-cli  全局安装（不用进入项目目录）
 
 1. 执行 **yarn** 或**yarn install** 安装全部依赖。
 
-2. 执行**yarn dev -p 端口号**，
+2. 执行**yarn dev -p 端口号**。
+
+yarn dev 命令是开发环境下编译本地文件。
 
 3. 本地浏览器中，输入 **localhost:端口号**，访问在线文档。
 
