@@ -22,12 +22,12 @@ const menu = (
    <Menu.Item key="iEdge">
    <a target="_parent" href="http://localhost:8080/iEdge">SuperMap iEdge</a>
   </Menu.Item>
-  <Menu.Item key="iManager">
+  {/* <Menu.Item key="iManager">
     <a target="_parent" href="http://localhost:8080/iManager">SuperMap iManager</a>
   </Menu.Item>
   <Menu.Item key="iClient">
     <a target="_parent" href="http://localhost:8080/iClient">SuperMap iClient</a>
-  </Menu.Item>
+  </Menu.Item> */}
   <Menu.Item key="iMobile">
     <a target="_parent" href="http://localhost:8080/iMobile">SuperMap iMobile</a>
   </Menu.Item>
