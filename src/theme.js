@@ -10,6 +10,7 @@
  */
 
 import hex2rgba from 'hex2rgba';
+import { auto } from 'eol';
 
 const colors = {
   lighter: '#373940', // light blue
@@ -86,7 +87,7 @@ const media = {
 
 const fonts = {
   header: {
-    fontSize: 41,
+    fontSize: 35,
     lineHeight: '53px',
     fontWeight: 700,
 
@@ -335,15 +336,15 @@ const sharedStyles = {
       lineHeight: 1.3,
 
       [media.size('xsmall')]: {
-        fontSize: 41,
+        fontSize: 35,
       },
 
       [media.between('small', 'large')]: {
-        fontSize: 41,
+        fontSize: 35,
       },
 
       [media.greaterThan('xlarge')]: {
-        fontSize: 41,
+        fontSize: 35,
       },
     },
 
@@ -351,9 +352,10 @@ const sharedStyles = {
       '::before': {
         content: ' ',
         display: 'block',
-        borderBottom: `1px solid ${colors.divider}`,
+        // borderBottom: `1px solid ${colors.divider}`,
         paddingTop: 44,
-        marginBottom: 40,
+        marginBottom: 10,
+        fontWeight: 700,
       },
 
       lineHeight: 1.2,
@@ -372,7 +374,7 @@ const sharedStyles = {
         fontSize: 20,
       },
       [media.greaterThan('xlarge')]: {
-        fontSize: 35,
+        fontSize: 30,
       },
     },
 
@@ -384,9 +386,9 @@ const sharedStyles = {
     '& h3': {
       '::before': {
         content: ' ',
-        fontWeight: 300,
+        fontWeight: 700,
         display: 'block',
-        paddingTop: 90,
+        paddingTop: 50,
         marginTop: -45,
       },
 
@@ -405,7 +407,7 @@ const sharedStyles = {
       '::before': {
         content: ' ',
         display: 'block',
-        paddingTop: 60,
+        paddingTop: 50,
         marginTop: -30,
       },
     },
@@ -414,7 +416,7 @@ const sharedStyles = {
       '::before': {
         content: ' ',
         display: 'block',
-        paddingTop: 100,
+        paddingTop: 50,
         marginTop: -50,
       },
 
@@ -430,14 +432,14 @@ const sharedStyles = {
 
     '& ol, & ul': {
       marginTop: 20,
-      fontSize: 16,
+      fontSize: 17,
       color: colors.text,
       paddingLeft: 20,
 
       '& p, & p:first-of-type': {
-        fontSize: 16,
-        marginTop: 0,
-        lineHeight: 1.2,
+        fontSize: 17,
+        marginTop: 10,
+        lineHeight: 1.5,
       },
 
       '& li': {
@@ -446,7 +448,7 @@ const sharedStyles = {
       },
 
       '& li.button-newapp': {
-        marginTop: 0,
+        marginTop: 10,
       },
 
       '& ol, & ul': {
@@ -493,7 +495,7 @@ const sharedStyles = {
         marginTop: 15,
 
         '&:first-of-type': {
-          fontWeight: 300,
+          fontWeight: 400,
           marginTop: 0,
         },
 

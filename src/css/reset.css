@@ -36,6 +36,7 @@ ul, ol {
 img {
   display: inline-block;
   vertical-align: top;
+  left: 0px;
 }
 
 pre, code {

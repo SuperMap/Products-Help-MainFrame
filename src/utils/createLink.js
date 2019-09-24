@@ -24,6 +24,13 @@ const createLinkBlog = ({
   item,
   section,
 }: CreateLinkBaseProps): Node => {
+  if (item.href) {
+    return (
+      <a css={[linkCss]} href={item.href}>
+        {item.title}
+      </a>
+    );
+  }
   return (
     <Link css={[linkCss, isActive && activeLinkCss]} to={item.id}>
       {isActive && <span css={activeLinkBefore} />}
@@ -64,6 +71,13 @@ const createLinkDocs = ({
   item,
   section,
 }: CreateLinkBaseProps): Node => {
+  if (item.href) {
+    return (
+      <a css={[linkCss]} href={item.href}>
+        {item.title}
+      </a>
+    );
+  }
   return (
     <Link
       css={[linkCss, isActive && activeLinkCss]}
@@ -84,6 +98,13 @@ const createLinkTutorial = ({
   onLinkClick,
   section,
 }: CreateLinkTutorialProps): Node => {
+  if (item.href) {
+    return (
+      <a css={[linkCss]} href={item.href}>
+        {item.title}
+      </a>
+    );
+  }
   return (
     <Link
       css={[linkCss, isActive && activeLinkCss]}
@@ -135,7 +156,7 @@ const linkCss = {
   transition: 'border 0.2s ease',
   fontSize: '16px', //定义侧目录二级标题的字体
   marginTop: 5,
-  fontweight: 500,
+  fontweight: 700,
 
   '&:hover': {
     color: colors.linkblue,
