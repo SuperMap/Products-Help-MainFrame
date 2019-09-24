@@ -137,7 +137,7 @@ const MarkdownPage = ({
                       href={`https://github.com/reactjs/reactjs.org/tree/master/${
                         markdownRemark.fields.path
                       }`}>
-                      Edit this page
+                      {/* Edit this page // 注释掉编辑此页的内容 */}
                     </a>
                   </div>
                 )}
