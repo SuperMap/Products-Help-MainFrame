@@ -15,7 +15,7 @@ import navGuides_zh from '../../content/guides/nav.zh.yml';
 import navTopics_en from '../../content/topics/nav.en.yml';
 import navTopics_zh from '../../content/topics/nav.zh.yml';
 // $FlowExpectedError
-import navTutorial from '../../content/tutorial/nav.en.yml';
+import navTutorial_en from '../../content/tutorial/nav.en.yml';
 import navTutorial_zh from '../../content/tutorial/nav.zh.yml';
 
 import navTerms_en from '../../content/terms/nav.en.yml';
@@ -88,7 +88,7 @@ const sectionListCommunity = navCommunity.map(
   }),
 );
 
-const sectionListTutorial = navTutorial.map(
+const sectionListTutorial_en = navTutorial_en.map(
   (item: Object): Object => ({
     ...item,
     directory: '/en/tutorial',
@@ -124,7 +124,7 @@ export {
   sectionListGuides_zh,
   sectionListTopics_en,
   sectionListTopics_zh,
-  sectionListTutorial,
+  sectionListTutorial_en,
   sectionListTutorial_zh,
   sectionListTerms_en,
   sectionListTerms_zh,
