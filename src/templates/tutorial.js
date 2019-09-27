@@ -9,10 +9,10 @@ import React from 'react';
 import {graphql} from 'gatsby';
 import Layout from 'components/Layout';
 import {createLinkTutorial} from 'utils/createLink';
-import {sectionListTutorial, sectionListTutorial_zh} from 'utils/sectionList';
+import {sectionListTutorial_en, sectionListTutorial_zh} from 'utils/sectionList';
 
 const Tutorial = ({data, location}) => {
-  let sectionListTutorialTmp = sectionListTutorial;
+  let sectionListTutorialTmp = sectionListTutorial_en;
   if (data.markdownRemark.fields.langKey === 'zh') {
     sectionListTutorialTmp = sectionListTutorial_zh;
   }
