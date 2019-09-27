@@ -17,18 +17,24 @@ import {sectionListGuides_en, sectionListGuides_zh,
   sectionListDocs_en, sectionListDocs_zh,
   sectionListTopics_en,
   sectionListTopics_zh,
+  sectionListTutorial_en,
+  //sectionListTutorial_zh,
 } from 'utils/sectionList';
 
 import ossLogoPng from 'icons/supermap_logo.svg';
+import { sectionListTutorial_zh } from '../../utils/sectionList';
 
 const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: boolean, curLan: string}) => {
   let sectionListGuides = sectionListGuides_en;
   let sectionListDocs = sectionListDocs_en;
   let sectionListTopics = sectionListTopics_en;
+  let sectionListTutorial = sectionListTutorial_en;
+  let count=0;
   if (curLan === 'zh') {
     sectionListGuides = sectionListGuides_zh;
     sectionListDocs = sectionListDocs_zh;
     sectionListTopics = sectionListTopics_zh;
+    sectionListTutorial = sectionListTutorial_zh;
   }
   console.log("sectionListGuides");
   console.log(sectionListGuides);
@@ -85,12 +91,13 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
                 <MetaTitle onDark={true}>{txt}</MetaTitle>
               )}
             </FormattedMessage>
-             {sectionListGuides[0].items.map(item => {
+             {sectionListGuides.map(section => {
+               const defaultItem = section.items[0];
                 return (
                 <FooterLink
-                  to={curLan+`/guides/${item.id}`}
-                  key={item.title}>
-                  {item.title}
+                  to={curLan+`/guides/${defaultItem.id}/`}
+                  key={section.title}>
+                  {section.title}
                 </FooterLink>
                 );
                 })}
@@ -101,8 +108,14 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
                 <MetaTitle onDark={true}>{txt}</MetaTitle>
               )}
             </FormattedMessage>
-            {sectionListDocs.map(section => {
+            {
+              sectionListTutorial.map(section => {
+                //添加限定显示目录树
+              if(count>=4){
+                return ""
+              }
               const defaultItem = section.items[0];
+              count++
               return (
                 <FooterLink
                   to={curLan+`/tutorial/${defaultItem.id}/`}
