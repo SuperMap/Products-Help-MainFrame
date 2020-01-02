@@ -42,14 +42,10 @@ const Header = ({location, langsMenu}) => {
       toLanObj.link = item.link;
     }
   });
-  let dropDown = "";
-  let productName=location.pathname.split('/')[1];
-  if(productName == "iDesktop_NET")
-    dropDown = "SuperMap iDesktop.NET";
-  else if(productName == "iDesktop_Java")
-    dropDown = "SuperMap iDesktop Java";
-  else
-    dropDown = "SuperMap " + productName;
+  
+  // 指定当前显示的产品名称
+  let productName="iManager";
+  let dropDown = 'SuperMap ' + productName;
   return (
     <header
       css={{
@@ -128,7 +124,7 @@ const Header = ({location, langsMenu}) => {
             </FormattedMessage>
           </Link> */}
             <Dropdown overlay={menu} placement="bottomCenter">
-            <a href={'/' + curLan}  className="ant-dropdown-link" css={{
+            <a href={'/' + productName + curLan}  className="ant-dropdown-link" css={{
               color: colors.white,
               marginRight: 10,
               fontWeight: 700,
@@ -217,7 +213,7 @@ const Header = ({location, langsMenu}) => {
                   },
                 }}
                   title={txt}
-                  to={'/' + curLan}
+                  to={'/' + curLan + '/'}
                 />
               )}
             </FormattedMessage>
@@ -282,7 +278,7 @@ const Header = ({location, langsMenu}) => {
                     display: 'none',
                   },
                 }}
-                href="http://support.supermap.com.cn/DataWarehouse/WebDocHelp/iDesktop911/WebHelp_JavaAPI/SuperMap_iDesktop_Java_API.htm"
+                href="http://support.supermap.com.cn"
                 target="_blank"
                 rel="noopener">
                 {txt}
