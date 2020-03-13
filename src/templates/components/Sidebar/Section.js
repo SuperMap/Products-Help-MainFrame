@@ -12,56 +12,6 @@ import ChevronSvg from '../ChevronSvg';
 
 class Section extends React.Component {
   state = {uid: ('' + Math.random()).replace(/\D/g, '')};
-renderSectionItems(items) {
-    const {
-      activeItemId,
-      createLink,
-      isActive,
-      isScrollSync,
-      location,
-      onLinkClick,
-      onSectionTitleClick,
-      section,
-    } = this.props;
-    const uid = 'section_' + this.state.uid;
-    return (
-      <ul
-        id={uid}
-        css={{
-          fontFeatureSettings: "'tnum'",
-          marginBottom: 10,
-
-          [media.greaterThan('small')]: {
-            display: isActive ? 'block' : 'none',
-          },
-        }}>
-        {items.map((item, index) => (
-          <li
-            key={item.id}
-            css={{
-              marginTop: 5,
-              marginLeft: 20,
-            }}>
-            {createLink({
-              isActive: isScrollSync
-                ? activeItemId === item.id
-                : isItemActive(location, item),
-              item: section.isOrdered
-                ? {...item, title: `${index + 1}. ${item.title}`}
-                : item,
-              location,
-              onLinkClick,
-              section,
-            })}
-
-            {item.subitems && (
-              this.renderSectionItems(item.subitems)
-            )}
-          </li>
-        ))}
-      </ul>
-    )
-  }
   render() {
     const {
       activeItemId,
@@ -111,13 +61,74 @@ renderSectionItems(items) {
             />
           </MetaTitle>
         </button>
-     
-        {
-          this.renderSectionItems(section.items)
-        }
+        <ul
+          id={uid}
+          css={{
+            fontFeatureSettings: "'tnum'",
+            marginBottom: 10,
+
+            [media.greaterThan('small')]: {
+              display: isActive ? 'block' : 'none',
+            },
+          }}>
+          {section.items.map((item, index) => (
+            <li
+              key={item.id}
+              css={{
+                marginTop: 5,
+              }}>
+              {createLink({
+                isActive: isScrollSync
+                  ? activeItemId === item.id
+                  : isItemActive(location, item),
+                item: section.isOrdered
+                  ? {...item, title: `${index + 1}. ${item.title}`}
+                  : item,
+                location,
+                onLinkClick,
+                section,
+              })}
+
+              {item.subitems && (
+                <ul css={{marginLeft: 20}}>
+                  {item.subitems.map(subitem => (
+                    <li key={subitem.id}>
+                      {createLink({
+                        isActive: isScrollSync
+                          ? activeItemId === subitem.id
+                          : isItemActive(location, subitem),
+                        item: subitem,
+                        location,
+                        onLinkClick,
+                        section,
+                      })}
+					  
+                      {subitem.subitems && (
+                       <ul css={{marginLeft: 20}}>
+                        {subitem.subitems.map(subitem1 => (
+                         <li key={subitem1.id}>
+                           {createLink({
+                             isActive: isScrollSync
+                               ? activeItemId === subitem1.id
+                               : isItemActive(location, subitem1),
+                             item: subitem1,
+                             location,
+                             onLinkClick,
+                             section,
+                          })}
+                         </li>
+                        ))}
+                       </ul>
+                      )}						
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
 }
-
 export default Section;
