@@ -30,17 +30,16 @@ const findSectionForPath = (
   const index = pathArray.length - 2;
   const slugId = pathArray.slice(index)[0];
 
-  sections.forEach(section => {
-    const match = section.items.some(
+  function hasMatch(items) {
+    return items.some(
       item =>
         slugId === slugify(item.id) ||
-        (item.subitems &&
-          item.subitems.some(subitem => 
-            slugId === slugify(subitem.id) || 
-            (subitem.subitems &&
-              subitem.subitems.some(subitem1 => slugId === slugify(subitem1.id))))),
+        (item.subitems && hasMatch(item.subitems)),
     );
+  };
 
+  sections.forEach(section => {
+    const match = hasMatch(section.items);
     if (match) {
       activeSection = section;
     }
