@@ -46,7 +46,7 @@ class Section extends React.Component {
             {createLink({
               isActive: isScrollSync
                 ? activeItemId === item.id
-                : isItemActive(location, item),
+                : isItemActive(location, item, section.directory),
               item: section.isOrdered
                 ? { ...item, title: `${index + 1}. ${item.title}` }
                 : item,

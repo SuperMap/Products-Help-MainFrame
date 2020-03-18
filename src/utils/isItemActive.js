@@ -20,10 +20,10 @@ type Item = {
   href: string,
 };
 
-const isItemActive = (location: Location, item: Item): boolean => {
-  if (location.hash) {
-    if (item.href) {
-      return location.hash === toAnchor(item.href);
+const isItemActive = (location: Location, item: Item, directory): boolean => {
+  if (item.href) {
+    if (location.pathname === (directory + '/' + item.href)) {
+      return true;
     }
   } else if (item.id.includes('html')) {
     return location.pathname.includes(item.id);

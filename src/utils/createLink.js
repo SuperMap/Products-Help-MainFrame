@@ -5,13 +5,13 @@
  * @flow
  */
 
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 import React from 'react';
 import ExternalLinkSvg from 'templates/components/ExternalLinkSvg';
 import slugify from 'utils/slugify';
-import {colors, media} from 'theme';
+import { colors, media } from 'theme';
 
-import type {Node} from 'react';
+import type { Node } from 'react';
 
 type CreateLinkBaseProps = {
   isActive: boolean,
@@ -71,17 +71,11 @@ const createLinkDocs = ({
   item,
   section,
 }: CreateLinkBaseProps): Node => {
-  if (item.href) {
-    return (
-      <a css={[linkCss]} href={item.href}>
-        {item.title}
-      </a>
-    );
-  }
+  let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
   return (
     <Link
       css={[linkCss, isActive && activeLinkCss]}
-      to={slugify(item.id, section.directory)}>
+      to={href}>
       {isActive && <span css={activeLinkBefore} />}
       {item.title}
     </Link>
@@ -98,18 +92,12 @@ const createLinkTutorial = ({
   onLinkClick,
   section,
 }: CreateLinkTutorialProps): Node => {
-  if (item.href) {
-    return (
-      <a css={[linkCss]} href={item.href}>
-        {item.title}
-      </a>
-    );
-  }
+  let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
   return (
     <Link
       css={[linkCss, isActive && activeLinkCss]}
       onClick={onLinkClick}
-      to={slugify(item.id, section.directory)}>
+      to={href}>
       {isActive && <span css={activeLinkBefore} />}
       {item.title}
     </Link>
@@ -133,6 +121,22 @@ const createLinkTerms = ({
     item,
     section,
   });
+};
+
+const createLinkapi = ({
+  isActive,
+  item,
+  section,
+}: CreateLinkBaseProps): Node => {
+  let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
+  return (
+    <Link
+      css={[linkCss, isActive && activeLinkCss]}
+      to={href}>
+      {isActive && <span css={activeLinkBefore} />}
+      {item.title}
+    </Link>
+  );
 };
 
 const activeLinkCss = {
@@ -169,4 +173,5 @@ export {
   createLinkDocs,
   createLinkTutorial,
   createLinkTerms,
+  createLinkapi,
 };
