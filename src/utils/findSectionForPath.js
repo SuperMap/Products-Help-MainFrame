@@ -30,10 +30,22 @@ const findSectionForPath = (
   const index = pathArray.length - 2;
   const slugId = pathArray.slice(index)[0];
 
+  let startIndex = pathname.indexOf('/zh/');
+  let endIndex = pathname.lastIndexOf('/');
+  if (startIndex == -1) {
+    startIndex = pathname.indexOf('/en/');
+    if (startIndex == -1) {
+      startIndex = 0;
+    }
+  }
+  if (endIndex != pathname.length - 1) {
+    endIndex = pathname.length;
+  }
+  const currentPath = pathname.substring(startIndex, endIndex);
+
   function hasMatch(items, directory) {
     return items.some(
-      item =>
-        (item.href && pathname === (directory + '/' + item.href)) || slugId === slugify(item.id) ||
+      item => (item.href && currentPath === (directory + '/' + item.href)) || slugId === slugify(item.id) ||
         (item.subitems && hasMatch(item.subitems, directory))
     );
   };

@@ -22,7 +22,20 @@ type Item = {
 
 const isItemActive = (location: Location, item: Item, directory): boolean => {
   if (item.href) {
-    if (location.pathname === (directory + '/' + item.href)) {
+    let pathname = location.pathname;
+    let startIndex = pathname.indexOf('/zh/');
+    let endIndex = pathname.lastIndexOf('/');
+    if (startIndex == -1) {
+      startIndex = pathname.indexOf('/en/');
+      if (startIndex == -1) {
+        startIndex = 0;
+      }
+    }
+    if (endIndex != pathname.length - 1) {
+      endIndex = pathname.length;
+    }
+    const currentPath = pathname.substring(startIndex, endIndex);
+    if (currentPath === (directory + '/' + item.href)) {
       return true;
     }
   } else if (item.id.includes('html')) {
