@@ -6,8 +6,8 @@
  */
 
 import Container from 'components/Container';
-import Flex from 'components/Flex';
 import MarkdownHeader from 'components/MarkdownHeader';
+import Flex from 'components/Flex';
 import NavigationFooter from 'templates/components/NavigationFooter';
 import React from 'react';
 import StickyResponsiveSidebar from 'components/StickyResponsiveSidebar';
@@ -17,6 +17,9 @@ import toCommaSeparatedList from 'utils/toCommaSeparatedList';
 import {sharedStyles} from 'theme';
 import createOgUrl from 'utils/createOgUrl';
 import TOC from 'components/TOC.js';
+import TopNavs from 'components/TopNavs'
+
+import Footer from 'components/LayoutFooter';
 
 import DownloadPDF from './DownloadPDF';
 import type {Node} from 'types';
@@ -31,9 +34,9 @@ type Props = {
   markdownRemark: Node,
   sectionList: Array<Object>, // TODO: Add better flow type once we have the Section component
   titlePostfix: string,
+  navList:Array<Object>,
   hasCurTOC: Boolean,
 };
-
 // const getPageById = (sectionList: Array<Object>, templateFile: ?string) => {
 //   if (!templateFile) {
 //     return null;
@@ -46,6 +49,14 @@ type Props = {
 //   return flattenedSectionItems.find(item => item.id === linkId);
 // };
 
+const bodytext = {
+  marginBottom:"400px",
+  };
+
+const sideStyle = {
+  // width:"220px"
+} 
+
 const MarkdownPage = ({
   authors = [],
   createLink,
@@ -55,16 +66,26 @@ const MarkdownPage = ({
   location,
   markdownRemark,
   sectionList,
+  directory,
+  navList,
   titlePostfix = '-SuperMap',
   hasCurTOC = true,
 }: Props) => {
   const hasAuthors = authors.length > 0;
   const titlePrefix = markdownRemark.frontmatter.title || '';
 
+  const layoutHasSidebar = location.pathname.match(
+    /^\/(en|zh)\/(docs|guides|topics|terms|specs|contributing|warnings)/,
+  );
+  const curLangKey = location.pathname.indexOf("/zh/") > -1?'zh':'en';
+  //  alert(JSON.stringify(markdownRemark))
+  // alert(JSON.stringify(location.pathname))
+  // alert(JSON.stringify(sectionList))
+  // alert(JSON.stringify(location))
+
   // const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
   // const next = getPageById(sectionList, markdownRemark.frontmatter.next);
   // console.log(markdownRemark.html);
-
   return (
     <Flex
       direction="column"
@@ -87,21 +108,41 @@ const MarkdownPage = ({
         flex: '1 0 auto',
         backgroundColor: '#f7f7f7',
       }}>
+      
         <Container>
           <div css={sharedStyles.articleLayout.container}>
-          <div css={sharedStyles.articleLayout.sidebar}>
+            
+            {/* 左侧导航栏 */}
+            <div
+            css={sharedStyles.articleLayout.sidebar}
+            style={sideStyle}> 
+            
+            {/* css={{
+              width:"10%",
+               position:"fixed",
+              }}> */}
               <StickyResponsiveSidebar
                 enableScrollSync={enableScrollSync}
                 createLink={createLink}
                 defaultActiveSection={findSectionForPath(
+                  directory,
                   location.pathname,
                   sectionList,
                 )}
+                directory={directory}
                 location={location}
                 sectionList={sectionList}
               />
             </div>
+
+            {/* 主体内容 */}
+            {/* <Flex type="article" direction="column" grow="1" halign="stretch" style={bodytext1} css={sharedStyles.articleLayout.article}> */}
             <Flex type="article" direction="column" grow="1" halign="stretch" css={sharedStyles.articleLayout.article}>
+            
+              <TopNavs 
+                navList = {navList}
+                directory = {directory}></TopNavs>
+
               <MarkdownHeader title={titlePrefix} />
 
               {(date || hasAuthors) && (
@@ -123,9 +164,10 @@ const MarkdownPage = ({
                 </div>
               )}
 
-              <div css={sharedStyles.articleLayout.content}>
+              <div css={sharedStyles.articleLayout.content} className='body-text-container'>
               {/* <DownloadPDF title="Download" markdownTitle={titlePrefix}/> */}
                 <div id="article_Content"
+                  style={bodytext}
                   css={[sharedStyles.markdown]}
                   dangerouslySetInnerHTML={{__html: markdownRemark.html}}
                 />
@@ -142,11 +184,19 @@ const MarkdownPage = ({
                   </div>
                 )}
               </div>
+              {/* <Footer layoutHasSidebar={layoutHasSidebar} curLan={curLangKey} /> */}
             </Flex>
-            {hasCurTOC? <div css={sharedStyles.articleLayout.curPageTOC}>
+
+            {/* 右侧导航 */}
+            {/* {hasCurTOC? <div css={{
+              width: "25%",
+              marginLeft: "3%",
+            }}>
+              <TOC/>
+            </div>:null} */}
+             {hasCurTOC? <div css={sharedStyles.articleLayout.curPageTOC}>
               <TOC/>
             </div>:null}
-            
           </div>
         </Container>
       </div>
@@ -157,5 +207,6 @@ const MarkdownPage = ({
     </Flex>
   );
 };
+
 
 export default MarkdownPage;

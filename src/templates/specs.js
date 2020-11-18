@@ -11,6 +11,8 @@ import {graphql} from 'gatsby';
 import Layout from 'components/Layout';
 import {createLinkDocs} from 'utils/createLink';
 import {sectionListSpecs_en, sectionListSpecs_zh} from 'utils/sectionList';
+import getSectionByLocation from 'utils/getSectionByLocation';
+import getNavList from 'utils/getNavList';
 
 const Specs = ({data, location}) => {
   let sectionListDocs = sectionListSpecs_en;

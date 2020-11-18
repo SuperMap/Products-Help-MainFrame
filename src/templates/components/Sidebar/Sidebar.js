@@ -16,6 +16,7 @@ class Sidebar extends Component {
 
     this.state = {
       activeSection: props.defaultActiveSection,
+      // title :""
     };
   }
 
@@ -25,20 +26,27 @@ class Sidebar extends Component {
       createLink,
       enableScrollSync,
       location,
+      directory,
       sectionList,
     } = this.props;
     const {activeSection} = this.state;
 
+    
+
     const SectionComponent = enableScrollSync ? ScrollSyncSection : Section;
 
+
+    // const SectionComponent = ScrollSyncSection ;
+
+    // alert(this.state.title) 
     return (
       <Flex
         type="nav"
         direction="column"
         halign="stretch"
         css={{
-          // width: '270px',
-          // paddingLeft: 20,
+          width: '250px',
+          // backgroundColor:"red",
           position: 'relative',
 
           [media.greaterThan('largerSidebar')]: {
@@ -52,16 +60,25 @@ class Sidebar extends Component {
         {sectionList.map((section, index) => (
           <SectionComponent
             createLink={createLink}
-            isActive={activeSection === section || sectionList.length === 1}
+            isActive={activeSection === section}
             key={index}
             location={location}
             onLinkClick={closeParentMenu}
-            onSectionTitleClick={() => this._toggleSection(section)}
+            directory={directory}
+            onSectionTitleClick={() => this._toggleSection(section,location.pathname)}
+            _toggleNav = {this._toggleNav.bind(this)}
             section={section}
           />
         ))}
       </Flex>
     );
+  }
+
+  
+  _toggleNav = val => {
+    // this.setState({
+    //   title: val.title,
+    // });
   }
 
   _toggleSection(section) {

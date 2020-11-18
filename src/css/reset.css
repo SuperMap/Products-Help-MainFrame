@@ -61,6 +61,12 @@ pre, code {
   margin-top: 1.2rem;
 }
 
+.body-text-container h3{
+  /* background-color: red; */
+  padding-top: 115px;
+  margin-top: -115px;
+}
+
 .toc-list-container ol a {
   color: var(--midlightgrey);
   text-decoration: none;
@@ -131,6 +137,10 @@ pre, code {
   font-weight: 500;
   margin-top: 0.6rem;
   margin-bottom: 0rem;
+}
+
+.toc-list-container {
+ margin-top: 25px;
 }
 
 .toc-list-container > ol > li a {

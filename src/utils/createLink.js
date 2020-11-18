@@ -68,13 +68,14 @@ const createLinkCommunity = ({
 
 const createLinkDocs = ({
   isActive,
+  isNav,
   item,
   section,
 }: CreateLinkBaseProps): Node => {
   let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
   return (
     <Link
-      css={[linkCss, isActive && activeLinkCss]}
+      css={[isNav ? linkCss && navColor:linkCss, isActive && activeLinkCss]}      
       to={href}>
       {isActive && <span css={activeLinkBefore} />}
       {item.title}
@@ -86,22 +87,30 @@ type CreateLinkTutorialProps = {
   onLinkClick: Function,
 } & CreateLinkBaseProps;
 
+const isActived = ({
+  isActive,
+}: CreateLinkTutorialProps): Node => {
+  return true;
+};
+
 const createLinkTutorial = ({
+  isNav,
   isActive,
   item,
   onLinkClick,
   section,
+  directory,
 }: CreateLinkTutorialProps): Node => {
-  let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
-  return (
+  let href = item.href ? directory + '/' + item.href : slugify(item.id, directory); 
+  return(
     <Link
-      css={[linkCss, isActive && activeLinkCss]}
+      css={[isNav ? linkCss && navColor:linkCss, isActive && activeLinkCss]}
       onClick={onLinkClick}
-      to={href}>
+      to={href} >
       {isActive && <span css={activeLinkBefore} />}
       {item.title}
     </Link>
-  );
+  ); 
 };
 
 const createLinkTerms = ({
@@ -153,6 +162,9 @@ const activeLinkBefore = {
   left: -15,
 };
 
+const navColor = {
+  color:colors.subtle
+}
 const linkCss = {
   color: colors.text,
   display: 'inline-block',
@@ -174,4 +186,5 @@ export {
   createLinkTutorial,
   createLinkTerms,
   createLinkapi,
+  isActived,
 };

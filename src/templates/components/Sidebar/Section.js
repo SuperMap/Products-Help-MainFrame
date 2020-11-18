@@ -4,66 +4,25 @@
  * @emails react-core
  */
 
-import React from 'react';
+import React, { isValidElement } from 'react';
 import { colors, media } from 'theme';
 import isItemActive from 'utils/isItemActive';
 import MetaTitle from '../MetaTitle';
+import { Link } from 'gatsby';
 import ChevronSvg from '../ChevronSvg';
+import Nav from './Nav.js'
 
 class Section extends React.Component {
   state = { uid: ('' + Math.random()).replace(/\D/g, '') };
 
-  renderSectionItems(items) {
-    const {
-      activeItemId,
-      createLink,
-      isActive,
-      isScrollSync,
-      location,
-      onLinkClick,
-      onSectionTitleClick,
-      section,
-    } = this.props;
-    const uid = 'section_' + this.state.uid;
-    return (
-      <ul
-        id={uid}
-        css={{
-          fontFeatureSettings: "'tnum'",
-          marginBottom: 10,
+  constructor(props, context) {
+    super(props, context);
 
-          [media.greaterThan('small')]: {
-            display: isActive ? 'block' : 'none',
-          },
-        }}>
-        {items.map((item, index) => (
-          <li
-            key={item.id}
-            css={{
-              marginTop: 5,
-              marginLeft: 20,
-            }}>
-            {createLink({
-              isActive: isScrollSync
-                ? activeItemId === item.id
-                : isItemActive(location, item, section.directory),
-              item: section.isOrdered
-                ? { ...item, title: `${index + 1}. ${item.title}` }
-                : item,
-              location,
-              onLinkClick,
-              section,
-            })}
-
-            {item.subitems && (
-              this.renderSectionItems(item.subitems)
-            )}
-          </li>
-        ))}
-      </ul>
-    )
+    this.state = {
+      // activeNav: 'WorkspaceManagent',数据管理
+      activeNav: [],
+    };
   }
-
   render() {
     const {
       activeItemId,
@@ -73,49 +32,127 @@ class Section extends React.Component {
       location,
       onLinkClick,
       onSectionTitleClick,
+      directory,
+      _toggleNav,
       section,
     } = this.props;
     const uid = 'section_' + this.state.uid;
+    
+    const {activeNav} = this.state;
+    
     return (
       <div>
-        <button
-          aria-expanded={isActive}
-          aria-controls={uid}
-          css={{
-            cursor: 'pointer',
-            backgroundColor: 'transparent',
-            border: 0,
-            marginTop: 10,
-            outline: 'none',
-          }}
-          onClick={onSectionTitleClick}>
-          <MetaTitle
-            cssProps={{
-              [media.greaterThan('small')]: {
-                color: isActive ? colors.text : colors.subtle,
-
-                ':hover': {
-                  color: colors.linkblue,
-                },
-              },
-            }}>
-            {section.title}
-            <ChevronSvg
-              cssProps={{
-                marginLeft: 7,
-                transform: isActive ? 'rotateX(180deg)' : 'rotateX(0deg)',
-                transition: 'transform 0.2s ease',
-
-                [media.lessThan('small')]: {
-                  display: 'none',
-                },
+        {!section.subitems ?
+          // <li
+          // css={{
+          //   color:isItemActive(location, section, directory) ? colors.linkblue: colors.subtle,
+          //   color:"red",
+          //   marginTop :20,
+          //   fontSize: 16,
+          //   fontWeight: 700 ,
+          //   marginLeft: 25 ,
+          //   textTransform: 'uppercase',
+          //   ':hover': {
+          //     color: colors.linkblue,
+          //   },
+          // }}>
+          // {createLink({
+          //   isNav :true,
+          //   isActive: isScrollSync
+          //     ? activeItemId === item.id
+          //     : isItemActive(location, item, directory),
+          //   item: section.isOrdered
+          //     ? { ...section, title: `${index + 1}. ${section.title}` }
+          //     : section,
+          //   location,
+          //   onLinkClick,
+          //   section,
+          //   directory
+          // })}
+          // </li>:
+          <div>
+                  <Link to={directory + "/" + section.href}>
+                  <button
+                    id={"button"+uid}
+                    aria-expanded={isActive}
+                    aria-controls={uid}
+                    css={{
+                      cursor: 'pointer',
+                      backgroundColor: 'transparent',
+                      border: 0,
+                      outline: 'none',
+                    }}>
+                    <MetaTitle
+                      cssProps={{
+                        [media.greaterThan('small')]: {
+                          // color: isActive ? colors.text : colors.subtle,
+                          ':hover': {
+                            color: colors.linkblue,
+                          },
+                        },
+                      }}> 
+                      {section.title}
+                    </MetaTitle>
+                  </button>
+                  </Link>
+                </div>
+                :
+            <button
+              aria-expanded={isActive}
+              aria-controls={uid}
+              css={{
+                cursor: 'pointer',
+                backgroundColor: 'transparent',
+                border: 0,
+                marginTop: 10,
+                outline: 'none',
               }}
-            />
-          </MetaTitle>
-        </button>
-        {
-          this.renderSectionItems(section.items)
-        }
+              onClick={onSectionTitleClick}>
+              <MetaTitle
+                cssProps={{
+                  [media.greaterThan('small')]: {
+                    color: isActive ? colors.text : colors.subtle,
+                    ':hover': {
+                      color: colors.linkblue,
+                    },
+                  },
+                }}>
+                  <ChevronSvg
+                  cssProps={{
+                    // marginLeft: 7,
+                    marginRight:7,
+                    transform: isActive ? 'rotateX(180deg)' : 'rotateX(0deg)',
+                    transition: 'transform 0.2s ease',
+
+                    [media.lessThan('small')]: {
+                      display: 'none',
+                    },
+                  }}
+                />
+                {section.title}
+              </MetaTitle>
+            </button>
+        
+      }
+        {section.subitems && section.subitems.map((item, index) => (
+          <Nav
+            item = {item}
+            index = {index}
+            activeItemId = {activeItemId}
+            createLink = {createLink}
+            // isShow = {false}
+            isActive = {isActive}
+            // activeNav = {activeNav}
+            // isOpen = {activeNav.indexOf(item.title) > -1 }
+            isScrollSync = {isScrollSync}
+            location = {location}
+            onLinkClick ={onLinkClick}
+            directory={directory}
+            section={section}
+            _toggleNav = {_toggleNav}
+            key = {index}>
+            </Nav>
+        ))}
       </div>
     );
   }
