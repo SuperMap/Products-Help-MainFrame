@@ -17,6 +17,7 @@ class DocSearch extends Component<{}, State> {
     enabled: true,
   };
   componentDidMount() {
+    
     // Initialize Algolia search.
     // TODO Is this expensive? Should it be deferred until a user is about to search?
     // eslint-disable-next-line no-undef

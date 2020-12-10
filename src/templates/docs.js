@@ -11,10 +11,12 @@ import {graphql} from 'gatsby';
 import Layout from 'components/Layout';
 import {createLinkDocs} from 'utils/createLink';
 import {sectionListDocs_en, sectionListDocs_zh} from 'utils/sectionList';
+import getSectionByLocation from 'utils/getSectionByLocation';
+import getNavList from 'utils/getNavList';
 
 const Docs = ({data, location}) => {
   let sectionListDocs = sectionListDocs_en;
-  if (data.markdownRemark.fields.langKey === 'zh') {
+  if (location.pathname.indexOf("/zh/") > -1 ) {
     sectionListDocs = sectionListDocs_zh;
   }
   console.log('docs data');

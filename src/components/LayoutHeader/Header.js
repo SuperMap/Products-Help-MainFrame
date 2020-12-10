@@ -12,7 +12,7 @@ import React from 'react';
 import {colors, fonts, media} from 'theme';
 import {version} from 'site-constants';
 import ExternalLinkSvg from 'templates/components/ExternalLinkSvg';
-import DocSearch from './DocSearch';
+import DocSearch from 'components/DocSearch';
 
 import logoSvg from 'icons/logo.svg';
 import {FormattedMessage} from 'react-intl';
@@ -44,7 +44,7 @@ const Header = ({location, langsMenu}) => {
   });
   
   // 指定当前显示的产品名称
-  let productName="iManager";
+  let productName="iDesktop";
   let dropDown = 'SuperMap ' + productName;
   return (
     <header
@@ -124,7 +124,7 @@ const Header = ({location, langsMenu}) => {
             </FormattedMessage>
           </Link> */}
             <Dropdown overlay={menu} placement="bottomCenter">
-            <a href={'/' + productName + curLan}  className="ant-dropdown-link" css={{
+            <a href={'/' + productName + '/' + curLan + '/'}  className="ant-dropdown-link" css={{
               color: colors.white,
               marginRight: 10,
               fontWeight: 700,
@@ -232,7 +232,7 @@ const Header = ({location, langsMenu}) => {
                 <HeaderLink
                   isActive={location.pathname.includes('/tutorial/')}
                   title={txt}
-                  to={'/' + curLan + '/tutorial/WorkspaceManagent/'}
+                  to={'/' + curLan + '/tutorial/TutorialIndex/'}
                 />
               )}
             </FormattedMessage>

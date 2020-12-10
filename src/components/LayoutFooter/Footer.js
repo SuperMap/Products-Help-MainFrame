@@ -36,8 +36,6 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
     sectionListTopics = sectionListTopics_zh;
     sectionListTutorial = sectionListTutorial_zh;
   }
-  console.log("sectionListGuides");
-  console.log(sectionListGuides);
   return (
   <footer
     css={{
@@ -92,7 +90,7 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
               )}
             </FormattedMessage>
              {sectionListGuides.map(section => {
-               const defaultItem = section.items[0];
+               const defaultItem = section.subitems[0];
                 return (
                 <FooterLink
                   to={curLan+`/guides/${defaultItem.id}/`}
@@ -114,7 +112,7 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
               if(count>=4){
                 return ""
               }
-              const defaultItem = section.items[0];
+              const defaultItem = section.subitems[0];
               count++
               return (
                 <FooterLink
@@ -132,7 +130,7 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
               )}
             </FormattedMessage>
             {sectionListTopics.map(section => {
-              const defaultItem = section.items[0];
+              const defaultItem = section.subitems[0];
               return (
                 <FooterLink
                   to={curLan+`/topics/${defaultItem.id}/`}
@@ -176,7 +174,7 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
               )}
             </FormattedMessage>
             {sectionListTopics.map(section => {
-              const defaultItem = section.items[0];
+              const defaultItem = section.subitems[0];
               return (
                 <FooterLink
                   to={curLan+`/specs/${defaultItem.id}/`}
@@ -207,12 +205,12 @@ const Footer = ({layoutHasSidebar = false, curLan = 'en'}: {layoutHasSidebar: bo
             },
           }}>
           <a
-            href="https://code.facebook.com/projects/"
+           href="https://www.supermap.com/cn/"
             target="_blank"
             rel="noopener">
             <img
-              alt="Facebook Open Source"
-              css={{
+              alt="Supermap Open Source"
+               css={{
                 maxWidth: 160,
                 height: 'auto',
               }}

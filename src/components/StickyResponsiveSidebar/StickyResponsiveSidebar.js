@@ -19,6 +19,7 @@ type Props = {
   enableScrollSync?: boolean,
   createLink: Function, // TODO: Add better flow type once we Flow-type createLink
   defaultActiveSection: string,
+  directory:string,
   location: Location,
   sectionList: Array<Object>, // TODO: Add better flow type once we have the Section component
 };
@@ -64,6 +65,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
     const menuOpacity = open ? 1 : 0;
     const menuOffset = open ? 0 : 40;
 
+    
     // TODO: role and aria props for 'close' button?
     return (
       <div style={{height:'100%'}}>
@@ -160,7 +162,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
           onClick={this._openNavMenu}
           role="button"
           tabIndex={0}>
-          <Container>
+          {/* <Container>
             <div
               css={{
                 display: 'flex',
@@ -201,7 +203,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
                 />
               </div>
             </div>
-          </Container>
+          </Container> */}
         </div>
       </div>
     );

@@ -39,7 +39,7 @@ class ScrollSyncSection extends Component {
   calculateItemTopOffsets() {
     const {section} = this.props;
 
-    const itemIds = _getItemIds(section.items);
+    const itemIds = _getItemIds(section.subitems);
     this.setState({
       itemTopOffsets: _getElementTopOffsetsById(itemIds),
     });

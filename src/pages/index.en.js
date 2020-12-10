@@ -305,7 +305,7 @@ const CtaItem = ({children, primary = false}) => (
 export const pageQuery = graphql`
   query IndexMarkdown {
     marketing: allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "//home/marketing/.*(en.md)$/"}}
+      filter: {fileAbsolutePath: {regex: "//en/home/marketing/.*(.md)$/"}}
       sort: {fields: [frontmatter___order], order: ASC}
     ) {
       edges {

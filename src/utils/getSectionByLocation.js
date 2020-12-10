@@ -18,15 +18,18 @@ type Item = {
 };
 
 type Section = {
-  items: Array<Item>,
+  subitems: Array<Item>,
 };
 
-const findSectionForPath = (
+const getSectionByLocation = (
   directory:string,
-  pathname: string,
+  location: string,
   sections: Array<Section>,
 ): Section | void => {
-  let activeSection;
+
+  let findItem;
+  let pathname = location.pathname;
+
   const pathArray = pathname.split('/');
   const index = pathArray.length - 2;
   const slugId = pathArray.slice(index)[0];
@@ -43,22 +46,34 @@ const findSectionForPath = (
     endIndex = pathname.length;
   }
   const currentPath = pathname.substring(startIndex, endIndex);
-
-  function hasMatch(items) {
-    return items.some(
-      item => (item.href && currentPath === (directory + '/' + item.href)) || slugId === slugify(item.id) ||
-        (item.subitems && hasMatch(item.subitems, directory))
-    );
+  
+  let find = false;
+  function hasMatch(parent,items) {
+    items.forEach(item => {
+      
+      let has = (item.href && currentPath === (directory + '/' + item.href)) || slugId === slugify(item.id) ;
+        if(!find && has){
+          if(item.subitems){
+            findItem = items;
+          }else{
+            findItem = parent;
+          }
+          find = true;
+        }else{
+          item.subitems && hasMatch(items,item.subitems);
+        }
+    });
   };
-  // console.log(sections)
   sections.forEach(section => {
-    const match = section.subitems && hasMatch(section.subitems);
-    if (match) {
-      activeSection = section;
+    if(!find){
+       hasMatch(sections,section.subitems);
+       if(findItem != null){
+          sections = findItem;
+      }
     }
   });
-
-  return activeSection;
+  // console.log(sections)
+  return sections;
 };
 
-export default findSectionForPath;
+export default getSectionByLocation;

@@ -1,0 +1,54 @@
+.search-results{
+    background-color: white;
+    box-shadow: 1px 1px 3px #afadad;
+    width: 500px;
+    border-radius: 1px;
+    font-size: 15px;
+}
+
+.search-list {
+    height: 40px;
+    line-height: 40px; 
+}
+
+.no-results{
+    background-color: #373940;
+    text-align: center;
+    height: 40px;
+    line-height: 40px; 
+}
+
+.search-title{
+    float:left;
+    color: gray;
+    height:auto;
+    text-align: right;
+    width: 40%;
+}
+.search-image{
+    text-align: right;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px; 
+}
+
+.search-list:hover{
+    background-color: #F7F7F7;   
+}
+
+.search-content{
+    float:left;
+    color: black;
+    font-weight: bold;
+}
+
+.centerdiv{  
+    float:left;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right:10px;
+    width: 1px;
+    height: 35px; 
+    background: #e4e3e3;
+}
+

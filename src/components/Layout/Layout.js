@@ -58,9 +58,10 @@ class Template extends Component<Props> {
       }
     }
     locationPath = locationPath.substring(startIndex, locationPath.length);
-    let curLangKey = 'en';
+	let curLangKey = 'en';
     let enPageObj = {};
     enPageObj.langKey = "en";
+    
     enPageObj.link = locationPath.replace("/zh/", "/en/");
     enPageObj.selected = true;
     let zhPageObj = {};

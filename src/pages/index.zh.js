@@ -41,6 +41,8 @@ class Home extends Component {
     const {data, location} = this.props;
     const {marketing} = data;
 
+    console.log("--------------------")
+    console.log(data)
     return (
       <Layout location={location}>
         <FormattedMessage id="site_title">
@@ -307,7 +309,7 @@ const CtaItem = ({children, primary = false}) => (
 export const pageQuery = graphql`
   query IndexMarkdownZh {
     marketing: allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "//home/marketing/.*(zh.md)$/"}}
+      filter: {fileAbsolutePath: {regex: "//zh/home/marketing/.*(.md)$/"}}
       sort: {fields: [frontmatter___order], order: ASC}
     ) {
       edges {

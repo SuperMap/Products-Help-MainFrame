@@ -11,7 +11,7 @@ const MetaTitle = ({children, title, cssProps = {}, onDark = false}) => (
   <div
     css={{
       color: onDark ? colors.subtleOnDark : colors.subtle,
-      fontSize: 17,
+      fontSize: 16,
       fontWeight: 700,
       lineHeight: 3,
       textTransform: 'uppercase',

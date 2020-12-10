@@ -8,7 +8,7 @@
 
 module.exports = {
   // 这里配置的是产品名称，产品名称中间有空格的，使用下划线代替，如 iDesktop_Java
-  pathPrefix: `/iDesktop_Java`,
+  pathPrefix: `/iDesktop`,
   siteMetadata: {
     title: 'React: 看看这是控制首页吗',
     siteUrl: 'https://reactjs.org',
@@ -46,8 +46,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'content',
-        path: `${__dirname}/content/`,
+        name: 'content/zh',
+        path: `${__dirname}/content/zh`,
+      },
+    },  
+     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content/en',
+        path: `${__dirname}/content/en`,
       },
     },
     // `gatsby-transformer-remark`,
