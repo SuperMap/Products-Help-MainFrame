@@ -19,7 +19,26 @@ class TOC extends React.Component {
             headingsOffset: parseInt(this.props.headingsOffset),
             
         })
+        // this.addEvent()
     }
+
+//      addEvent(){
+
+//         var list = document.getElementsByClassName("toc-link");
+//  
+//         for(var i = 0; i <list.length; i++){
+//             list[i].addEventListener("click",function (e) {
+//             var a = e.target;
+//             var className = a.getAttribute('class');
+            
+//             if(className.indexOf("is-active-link") == -1){
+//                 a.className += " is-active-link";
+//             }
+//             // a.addClass("is-active-link")
+//             // alert()
+//             });
+//         }
+//       }
 
     render() {
         return (

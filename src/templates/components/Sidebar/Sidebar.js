@@ -45,8 +45,7 @@ class Sidebar extends Component {
         direction="column"
         halign="stretch"
         css={{
-          width: '250px',
-          // backgroundColor:"red",
+          // width: '1050px',
           position: 'relative',
 
           [media.greaterThan('largerSidebar')]: {

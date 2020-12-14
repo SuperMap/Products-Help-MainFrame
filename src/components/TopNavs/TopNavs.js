@@ -48,13 +48,14 @@ class TopNavs extends React.Component{
         } = this.props;
 
         return(
-            <div css={{height:"50px",
+            <div css={{
+                height:"50px",
                 // width:"100%",
                 // marginLeft:-80,
                 // paddingLeft:70,
                 // backgroundColor:"rgb(247,247,247)",
 
-                width:"59%",              
+                width:"30%",              
                 float:"left",
                 position: "fixed",
                 borderBottom:"1px solid #ececec",
