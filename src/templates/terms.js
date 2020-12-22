@@ -15,7 +15,7 @@ import getNavList from 'utils/getNavList';
 
 const Terms = ({data, location}) => {
   let sectionListTutorialTmp = sectionListTerms_en;
-  if (data.markdownRemark.fields.langKey === 'zh') {
+  if (location.pathname.indexOf("/zh/") > -1 ) {
     sectionListTutorialTmp = sectionListTerms_zh;
   }
   // console.log('tutorial directory');

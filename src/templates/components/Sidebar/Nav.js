@@ -2,7 +2,7 @@ import React from 'react';
 import { colors, media } from 'theme';
 import isItemActive from 'utils/isItemActive';
 import MetaTitle from '../MetaTitle';
-import ChevronSvg from '../ChevronSvg';
+import {ChevronSvg}  from '../ChevronSvg';
 import { Alert } from 'antd';
 import { Link } from 'gatsby';
 
@@ -73,7 +73,6 @@ class Nav extends React.Component {
                         [media.greaterThan('small')]: {
                           // color: isActive ? colors.text : colors.subtle,
                           marginLeft:25 ,
-                          fontSize:16,
                           height:"5px",
                           marginTop:"-5px",
                           ':hover': {
@@ -85,7 +84,6 @@ class Nav extends React.Component {
                         cssProps={{
                           // marginLeft: 7,
                           marginRight:7,
-                          transform: isOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
                           transition: 'transform 0.2s ease',
   
                           [media.lessThan('small')]: {

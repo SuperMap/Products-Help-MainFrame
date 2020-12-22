@@ -17,9 +17,10 @@ import {sectionListTutorial_en, sectionListTutorial_zh} from 'utils/sectionList'
 
 const Tutorial = ({data, location}) => {
   let sectionListTutorialTmp = sectionListTutorial_en;
-  if (data.markdownRemark.fields.langKey === 'zh') {
+  if (location.pathname.indexOf("/zh/") > -1 ) {
     sectionListTutorialTmp = sectionListTutorial_zh;
   }
+
 
   let directory = sectionListTutorialTmp[0].directory;
   let title = directory.indexOf("/zh/") > -1 ? "教程" : "Tutorial";

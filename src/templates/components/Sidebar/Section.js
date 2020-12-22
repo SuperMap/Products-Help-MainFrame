@@ -9,7 +9,7 @@ import { colors, media } from 'theme';
 import isItemActive from 'utils/isItemActive';
 import MetaTitle from '../MetaTitle';
 import { Link } from 'gatsby';
-import ChevronSvg from '../ChevronSvg';
+import {ChevronSvg, ActiveChevronSvg}  from '../ChevronSvg';
 import Nav from './Nav.js'
 
 class Section extends React.Component {
@@ -39,37 +39,23 @@ class Section extends React.Component {
     const uid = 'section_' + this.state.uid;
     
     const {activeNav} = this.state;
+
+    
+
+    const Chevron = isActive ? ActiveChevronSvg : ChevronSvg;
     
     return (
-      <div>
+      <div css={{
+          textAlign: "left",
+          // overflow:" hidden",
+          display:"block",/*内联对象需加*/
+          wordBreak:"keep-all",/* 不换行 */
+          whiteSpace:"nowrap",/* 不换行 */
+        // textOverflow:"ellipsis",/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+        paddingRight:50,
+
+      }}>
         {!section.subitems ?
-          // <li
-          // css={{
-          //   color:isItemActive(location, section, directory) ? colors.linkblue: colors.subtle,
-          //   color:"red",
-          //   marginTop :20,
-          //   fontSize: 16,
-          //   fontWeight: 700 ,
-          //   marginLeft: 25 ,
-          //   textTransform: 'uppercase',
-          //   ':hover': {
-          //     color: colors.linkblue,
-          //   },
-          // }}>
-          // {createLink({
-          //   isNav :true,
-          //   isActive: isScrollSync
-          //     ? activeItemId === item.id
-          //     : isItemActive(location, item, directory),
-          //   item: section.isOrdered
-          //     ? { ...section, title: `${index + 1}. ${section.title}` }
-          //     : section,
-          //   location,
-          //   onLinkClick,
-          //   section,
-          //   directory
-          // })}
-          // </li>:
           <div>
                   <Link to={directory + "/" + section.href}>
                   <button
@@ -81,6 +67,7 @@ class Section extends React.Component {
                       backgroundColor: 'transparent',
                       border: 0,
                       outline: 'none',
+
                     }}>
                     <MetaTitle
                       cssProps={{
@@ -104,7 +91,7 @@ class Section extends React.Component {
                 cursor: 'pointer',
                 backgroundColor: 'transparent',
                 border: 0,
-                marginTop: 10,
+                // marginTop: 10,
                 outline: 'none',
               }}
               onClick={onSectionTitleClick}>
@@ -117,13 +104,11 @@ class Section extends React.Component {
                     },
                   },
                 }}>
-                  <ChevronSvg
-                  cssProps={{
+
+                  <Chevron
+                    cssProps={{
                     // marginLeft: 7,
                     marginRight:7,
-                    transform: isActive ? 'rotateX(180deg)' : 'rotateX(0deg)',
-                    transition: 'transform 0.2s ease',
-
                     [media.lessThan('small')]: {
                       display: 'none',
                     },

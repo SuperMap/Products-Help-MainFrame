@@ -50,6 +50,7 @@ type Props = {
 // };
 
 const bodytext = {
+  marginTop:-20,
   marginBottom:"400px",
   };
 
@@ -114,7 +115,7 @@ const MarkdownPage = ({
             
             {/* 左侧导航栏 */}
             <div
-            css={sharedStyles.articleLayout.sidebar}
+            // css={sharedStyles.articleLayout.sidebar}
             style={sideStyle}> 
             
             {/* css={{
@@ -138,7 +139,6 @@ const MarkdownPage = ({
             {/* 主体内容 */}
             {/* <Flex type="article" direction="column" grow="1" halign="stretch" style={bodytext1} css={sharedStyles.articleLayout.article}> */}
             <Flex type="article" direction="column" grow="1" halign="stretch" css={sharedStyles.articleLayout.article}>
-            
               <TopNavs 
                 navList = {navList}
                 directory = {directory}></TopNavs>
@@ -172,18 +172,17 @@ const MarkdownPage = ({
                   dangerouslySetInnerHTML={{__html: markdownRemark.html}}
                 />
 
-                {markdownRemark.fields.path && (
+                {/* {markdownRemark.fields.path && (
                   <div css={{marginTop: 80}}>
                     <a
                       css={sharedStyles.articleLayout.editLink}
                       href={`https://github.com/reactjs/reactjs.org/tree/master/${
                         markdownRemark.fields.path
                       }`}>
-                      {/* Edit this page // 注释掉编辑此页的内容 */}
                     </a>
                   </div>
-                )}
-              </div>
+                )} */}
+              </div>  
               {/* <Footer layoutHasSidebar={layoutHasSidebar} curLan={curLangKey} /> */}
             </Flex>
 

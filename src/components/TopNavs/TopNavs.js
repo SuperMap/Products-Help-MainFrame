@@ -1,6 +1,8 @@
 
 import {colors} from 'theme';
 import { Link } from 'gatsby';
+import React from 'react';
+import MetaTitle from '../../templates/components/MetaTitle';
 
 class TopNavs extends React.Component{
 
@@ -16,20 +18,22 @@ class TopNavs extends React.Component{
                 <Link to={directory +"/" + nav.href}
                     css={{
                     color:colors.subtle,
-                    fontSize:16,
+                    marginTop: 5,
                     }}>
                     <button
                         css={{
                         cursor: 'pointer',
                         backgroundColor: 'transparent',
                         border: 0,
+                        fontSize: 16,
+                        fontWeight: 700,
                         outline: 'none',
                         paddingTop:15,
                         marginLeft:5,
                         ':hover':{
                         textDecoration:"underline"
                           }
-                        }}>{nav.title}</button>     
+                        }}>{nav.title}</button> 
                 </Link>
                 <span> &nbsp;/</span>
             </div>
@@ -44,13 +48,19 @@ class TopNavs extends React.Component{
         } = this.props;
 
         return(
-            <div css={{height:"50px",
-                width:"59%",
+            <div css={{
+                height:"50px",
+                // width:"100%",
+                // marginLeft:-80,
+                // paddingLeft:70,
+                // backgroundColor:"rgb(247,247,247)",
+
+                width:"30%",              
                 float:"left",
                 position: "fixed",
                 borderBottom:"1px solid #ececec",
-                backgroundColor:colors.white,
                 marginLeft:-10,
+                backgroundColor:colors.white,
                 zIndex:999
             }}>
                

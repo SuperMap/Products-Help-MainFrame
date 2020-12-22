@@ -16,7 +16,7 @@ import getNavList from 'utils/getNavList';
 
 const Guides = ({data, location}) => {
   let sectionListDocs = sectionListGuides_en;
-  if (data.markdownRemark.fields.langKey === 'zh') {
+  if (location.pathname.indexOf("/zh/") > -1 ) {
     sectionListDocs = sectionListGuides_zh;
   }
   // console.log('guides data');

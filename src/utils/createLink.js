@@ -149,7 +149,7 @@ const createLinkapi = ({
 };
 
 const activeLinkCss = {
-  fontWeight: 700,
+  fontWeight: 600,
   color: colors.linkblue,
 };
 
@@ -172,7 +172,7 @@ const linkCss = {
   transition: 'border 0.2s ease',
   fontSize: '16px', //定义侧目录二级标题的字体
   marginTop: 5,
-  fontweight: 700,
+  fontweight: 500,
 
   '&:hover': {
     color: colors.linkblue,

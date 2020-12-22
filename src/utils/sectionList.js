@@ -6,22 +6,22 @@
  */
 
 // $FlowExpectedError
-import navCommunity from '../../content/community/nav.yml';
+import navCommunity from '../../content/zh/community/nav.yml';
 // $FlowExpectedError
-import navDocs_en from '../../content/docs/nav.en.yml';
-import navDocs_zh from '../../content/docs/nav.zh.yml';
-import navGuides_en from '../../content/guides/nav.en.yml';
-import navGuides_zh from '../../content/guides/nav.zh.yml';
-import navTopics_en from '../../content/topics/nav.en.yml';
-import navTopics_zh from '../../content/topics/nav.zh.yml';
+import navDocs_en from '../../content/en/docs/nav.yml';
+import navDocs_zh from '../../content/zh/docs/nav.yml';
+import navGuides_en from '../../content/en/guides/nav.yml';
+import navGuides_zh from '../../content/zh/guides/nav.yml';
+import navTopics_en from '../../content/en/topics/nav.yml';
+import navTopics_zh from '../../content/zh/topics/nav.yml';
 // $FlowExpectedError
-import navTutorial_en from '../../content/tutorial/nav.en.yml';
-import navTutorial_zh from '../../content/tutorial/nav.zh.yml';
+import navTutorial_en from '../../content/en/tutorial/nav.yml';
+import navTutorial_zh from '../../content/zh/tutorial/nav.yml';
 
-import navTerms_en from '../../content/terms/nav.en.yml';
-import navTerms_zh from '../../content/terms/nav.zh.yml';
-import navSpecs_en from '../../content/specs/nav.en.yml';
-import navSpecs_zh from '../../content/specs/nav.zh.yml';
+import navTerms_en from '../../content/en/terms/nav.yml';
+import navTerms_zh from '../../content/zh/terms/nav.yml';
+import navSpecs_en from '../../content/en/specs/nav.yml';
+import navSpecs_zh from '../../content/zh/specs/nav.yml';
 
 const sectionListDocs_en = navDocs_en.map(
   (item: Object): Object => ({
