@@ -12,7 +12,8 @@ import React from 'react';
 import {colors, fonts, media} from 'theme';
 import {version} from 'site-constants';
 import ExternalLinkSvg from 'templates/components/ExternalLinkSvg';
-import DocSearch from 'components/DocSearch';
+// import DocSearch from 'components/DocSearch';
+import DocSearch from './DocSearch';
 
 import logoSvg from 'icons/logo.svg';
 import {FormattedMessage} from 'react-intl';
