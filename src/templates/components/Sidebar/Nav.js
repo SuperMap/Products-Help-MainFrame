@@ -104,7 +104,6 @@ class Nav extends React.Component {
                       fontSize: 16,
                       fontWeight: 700 ,
                       marginLeft: 25 ,
-                      textTransform: 'uppercase',
                       ':hover': {
                         color: colors.linkblue,
                       },

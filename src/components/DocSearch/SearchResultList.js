@@ -6,16 +6,17 @@ import {
     connectHighlight
   } from 'react-instantsearch-dom';
 
-const Highlight = ({ highlight, attribute, hit }) => {
-  const parsedHit = highlight({
+const TitleHighlight = ({ highlight,attribute, hit }) => {
+
+  const titleHit = highlight({
     highlightProperty: '_highlightResult',
     attribute,
     hit,
-  });
+  }); 
 
   return (
     <span>
-      {parsedHit.map(
+      {titleHit.map(
         (part, index) =>
           part.isHighlighted ? (
             <span style={{"backgroundColor":"#FFE564"}} key={index}>{part.value}</span>
@@ -27,7 +28,30 @@ const Highlight = ({ highlight, attribute, hit }) => {
   );
 };
 
-const CustomHighlight = connectHighlight(Highlight);
+const ContentHighlight = ({ highlight,attribute, hit }) => {
+
+  const contentHit = highlight({
+    highlightProperty: '_highlightResult',
+    attribute,
+    hit,
+  });
+
+  return (
+    <span>
+      {contentHit.map(
+        (part, index) =>
+          part.isHighlighted ? (
+            <span style={{"backgroundColor":"#FFE564"}} key={index}>{part.value}</span>
+          ) : (
+            <span key={index}>{part.value}</span>
+          )
+      )}
+    </span>
+  );
+};
+
+const CustomTitleHighlight = connectHighlight(TitleHighlight);
+const CustomContentHighlight = connectHighlight(ContentHighlight);
 
 class SearchResultList extends React.Component {
     
@@ -36,16 +60,24 @@ class SearchResultList extends React.Component {
         const find = this.props.find;
         const query = this.props.query;
     
-        const listItems = find ? hits.map((hit) =>
+        var result = [];
+        for(var i in hits){
+          if(i >= 5){
+            break;
+          }
+          result[i] = hits[i];
+        }
+        const listItems = find ? result.map((hit) =>
             <Link to={hit.href}>
                 <li key={ ('' + Math.random()).replace(/\D/g, '')} className='search-list'>
                     <div className="search-title">
-                         <span>{hit.title}</span>
+                       <CustomTitleHighlight  attribute="title" hit={hit} tagName="mark" />
                     </div>
-                    <div className="centerdiv"></div> 
-                    <div className="search-content">
-                        <CustomHighlight attribute="title" hit={hit} tagName="mark" />
+                   <div className="search-content">
+                        <CustomContentHighlight  attribute="content" hit={hit} tagName="mark" />
                     </div>
+                    <div className="bottom-border"></div>
+                
                 </li>
             </Link>
 		):(

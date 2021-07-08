@@ -33,7 +33,7 @@ class TopNavs extends React.Component{
                         ':hover':{
                         textDecoration:"underline"
                           }
-                        }}>{nav.title}</button> 
+                        }}>{nav.title+""}</button> 
                 </Link>
                 <span> &nbsp;/</span>
             </div>
@@ -49,17 +49,12 @@ class TopNavs extends React.Component{
 
         return(
             <div css={{
-                height:"50px",
-                // width:"100%",
-                // marginLeft:-80,
-                // paddingLeft:70,
-                // backgroundColor:"rgb(247,247,247)",
-
-                width:"30%",              
+                width:"59%",              
                 float:"left",
                 position: "fixed",
                 borderBottom:"1px solid #ececec",
                 marginLeft:-10,
+                paddingBottom:10,
                 backgroundColor:colors.white,
                 zIndex:999
             }}>

@@ -45,17 +45,35 @@ class Section extends React.Component {
     const Chevron = isActive ? ActiveChevronSvg : ChevronSvg;
     
     return (
-      <div css={{
-          textAlign: "left",
-          // overflow:" hidden",
-          display:"block",/*内联对象需加*/
-          wordBreak:"keep-all",/* 不换行 */
-          whiteSpace:"nowrap",/* 不换行 */
-        // textOverflow:"ellipsis",/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
-        paddingRight:50,
-
-      }}>
+      <div>
         {!section.subitems ?
+          // <li
+          // css={{
+          //   color:isItemActive(location, section, directory) ? colors.linkblue: colors.subtle,
+          //   color:"red",
+          //   marginTop :20,
+          //   fontSize: 16,
+          //   fontWeight: 700 ,
+          //   marginLeft: 25 ,
+          //   textTransform: 'uppercase',
+          //   ':hover': {
+          //     color: colors.linkblue,
+          //   },
+          // }}>
+          // {createLink({
+          //   isNav :true,
+          //   isActive: isScrollSync
+          //     ? activeItemId === item.id
+          //     : isItemActive(location, item, directory),
+          //   item: section.isOrdered
+          //     ? { ...section, title: `${index + 1}. ${section.title}` }
+          //     : section,
+          //   location,
+          //   onLinkClick,
+          //   section,
+          //   directory
+          // })}
+          // </li>:
           <div>
                   <Link to={directory + "/" + section.href}>
                   <button
@@ -119,6 +137,7 @@ class Section extends React.Component {
             </button>
         
       }
+        {/* {console.log(createLink)} */}
         {section.subitems && section.subitems.map((item, index) => (
           <Nav
             item = {item}

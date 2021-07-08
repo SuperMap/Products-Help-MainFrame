@@ -19,8 +19,6 @@ const Docs = ({data, location}) => {
   if (location.pathname.indexOf("/zh/") > -1 ) {
     sectionListDocs = sectionListDocs_zh;
   }
-  console.log('docs data');
-  console.log(data.markdownRemark);
   return (
     <Layout location={location}>
       <MarkdownPage

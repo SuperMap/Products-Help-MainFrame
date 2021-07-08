@@ -14,7 +14,7 @@ const MetaTitle = ({children, title, cssProps = {}, onDark = false}) => (
       fontSize: 16,
       fontWeight: 700,
       lineHeight: 3,
-      textTransform: 'uppercase',
+      // textTransform: 'uppercase',
       letterSpacing: '0.08em',
       ...cssProps,
     }}>

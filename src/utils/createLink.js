@@ -71,8 +71,9 @@ const createLinkDocs = ({
   isNav,
   item,
   section,
+  directory
 }: CreateLinkBaseProps): Node => {
-  let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
+  let href = item.href ? directory + '/' + item.href : slugify(item.id, directory);
   return (
     <Link
       css={[isNav ? linkCss && navColor:linkCss, isActive && activeLinkCss]}      
@@ -136,8 +137,9 @@ const createLinkapi = ({
   isActive,
   item,
   section,
+  directory
 }: CreateLinkBaseProps): Node => {
-  let href = item.href ? section.directory + '/' + item.href : slugify(item.id, section.directory);
+  let href = item.href ? directory + '/' + item.href : slugify(item.id, directory);
   return (
     <Link
       css={[linkCss, isActive && activeLinkCss]}
@@ -163,14 +165,15 @@ const activeLinkBefore = {
 };
 
 const navColor = {
-  color:colors.subtle
+  color:colors.subtle,
+  textTransform: "none"
 }
 const linkCss = {
   color: colors.text,
   display: 'inline-block',
   borderBottom: '1px solid transparent',
   transition: 'border 0.2s ease',
-  fontSize: '16px', //定义侧目录二级标题的字体
+  fontSize: '96px', //定义侧目录二级标题的字体
   marginTop: 5,
   fontweight: 500,
 

@@ -27,11 +27,12 @@ const Topics = ({data, location}) => {
 
   return (
     <Layout location={location}>
+      {console.log(location)}
       <MarkdownPage
         createLink={createLinkDocs}
         location={location}
         markdownRemark={data.markdownRemark}
-        sectionList={sectionListDocs}
+        // sectionList={sectionListDocs}
         sectionList={getSectionByLocation(directory,location,sectionListDocs)}
         navList={getNavList(directory,location,sectionListDocs,title,"/supermap-bigdata-tech/")}
         directory = {directory}

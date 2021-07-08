@@ -7,8 +7,8 @@
 }
 
 .search-list {
-    height: 40px;
-    line-height: 40px; 
+    height: 150px;
+    /* line-height: 60px;  */
 }
 
 .no-results{
@@ -19,11 +19,14 @@
 }
 
 .search-title{
-    float:left;
-    color: gray;
-    height:auto;
-    text-align: right;
-    width: 40%;
+    color: black;
+    margin-left: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 40px;
+    height: 30%;
+    overflow:hidden;
 }
 .search-image{
     text-align: right;
@@ -37,18 +40,16 @@
 }
 
 .search-content{
-    float:left;
     color: black;
-    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 44%;
+    overflow:hidden;
 }
-
-.centerdiv{  
-    float:left;
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-right:10px;
-    width: 1px;
-    height: 35px; 
-    background: #e4e3e3;
+.bottom-border{
+    height: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    /* background-color: red; */
+    border-bottom: 1px solid #d8d4d4;
 }
-

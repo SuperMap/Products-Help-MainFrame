@@ -55,7 +55,7 @@ const bodytext = {
   };
 
 const sideStyle = {
-  // width:"220px"
+  width:"300px"
 } 
 
 const MarkdownPage = ({
@@ -83,6 +83,7 @@ const MarkdownPage = ({
   // alert(JSON.stringify(location.pathname))
   // alert(JSON.stringify(sectionList))
   // alert(JSON.stringify(location))
+  console.log(sectionList);
 
   // const prev = getPageById(sectionList, markdownRemark.frontmatter.prev);
   // const next = getPageById(sectionList, markdownRemark.frontmatter.next);
@@ -139,6 +140,7 @@ const MarkdownPage = ({
             {/* 主体内容 */}
             {/* <Flex type="article" direction="column" grow="1" halign="stretch" style={bodytext1} css={sharedStyles.articleLayout.article}> */}
             <Flex type="article" direction="column" grow="1" halign="stretch" css={sharedStyles.articleLayout.article}>
+            
               <TopNavs 
                 navList = {navList}
                 directory = {directory}></TopNavs>
@@ -182,7 +184,7 @@ const MarkdownPage = ({
                     </a>
                   </div>
                 )} */}
-              </div>  
+              </div>
               {/* <Footer layoutHasSidebar={layoutHasSidebar} curLan={curLangKey} /> */}
             </Flex>
 

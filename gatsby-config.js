@@ -184,3 +184,58 @@ module.exports = {
     },
   ],
 };
+
+const myQuery = `{
+  allSitePage {
+    nodes {
+      objectID: id
+      component
+      path
+      componentChunkName
+      internal {
+        type
+        contentDigest
+        owner
+      }
+    }
+  }
+}`;
+
+const queries = [
+  {
+    query: myQuery,
+    transformer: ({ data }) => data.pages.nodes, // optional
+    indexName: 'index name to target', // overrides main index name, optional
+    settings: {
+      // optional, any index settings
+      // Note: by supplying settings, you will overwrite all existing settings on the index
+    },
+    matchFields: ['slug', 'modified'], // Array<String> overrides main match fields, optional
+  },
+];
+
+// module.exports = {
+//   plugins: [
+//     {
+//       // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
+//       resolve: `gatsby-plugin-algolia`,
+//       options: {
+//         appId: "0260N9RE38",
+//         // Use Admin API key without GATSBY_ prefix, so that the key isn't exposed in the application
+//         // Tip: use Search API key with GATSBY_ prefix to access the service from within components
+//         apiKey: "b03ab47c329f6c18945a50b8f09d3771",
+//         indexName:"idesktop-zh9", // for all queries
+//         queries,
+//         chunkSize: 10000, // default: 1000
+//         settings: {
+//           // optional, any index settings
+//           // Note: by supplying settings, you will overwrite all existing settings on the index
+//         },
+//         enablePartialUpdates: true, // default: false
+//         matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+//         concurrentQueries: false, // default: true
+//         skipIndexing: true, // default: false, useful for e.g. preview deploys or local development
+//       },
+//     },
+//   ],
+// };

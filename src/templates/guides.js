@@ -19,9 +19,6 @@ const Guides = ({data, location}) => {
   if (location.pathname.indexOf("/zh/") > -1 ) {
     sectionListDocs = sectionListGuides_zh;
   }
-  // console.log('guides data');
-  // console.log(data.markdownRemark);
-  console.log(sectionListDocs)
   let directory = sectionListDocs[0].directory;
   let title = directory.indexOf("/zh/")> -1 ? "入门" : "Guides";
 
@@ -31,7 +28,7 @@ const Guides = ({data, location}) => {
         createLink={createLinkDocs}
         location={location}
         markdownRemark={data.markdownRemark}
-        sectionList={sectionListDocs}
+        // sectionList={sectionListDocs}
         sectionList={getSectionByLocation(directory,location,sectionListDocs)}
         navList={getNavList(directory,location,sectionListDocs,title,"/getting-started/")}
         directory = {directory}
